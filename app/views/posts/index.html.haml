@@ -1,0 +1,11 @@
+%form{ action: '/posts/create', method: 'post' }
+  %textarea{ name: 'message', style: 'width: 100%; height: 20vh;' }
+  %input{ type: 'submit', value: 'Post' }
+
+%hr{ style: 'margin-top: 50px; margin-bottom: 50px;' }
+
+%h1 Post History
+- Post.all.each do |p|
+  = p.message.gsub("\n", '<br/>').html_safe
+  %div{ style: 'float: right;' }= p.created_at
+  %hr
